@@ -1,0 +1,79 @@
+TABLE CREATION
+
+SQL>> create table student(student_name varchar(20),city varchar(20),age int,address varchar(25),class varchar(10));
+Table created.
+
+ROW CREATION
+
+SQL> INSERT INTO student (student_name, city, age, address, class)VALUES('Alice Johnson', 'New York', 16, '123 Elm Street', '10th');
+1 row created.
+
+SQL> INSERT INTO student (student_name, city, age, address, class)VALUES('Bob Smith', 'Los Angeles', 15, '456 Oak Avenue', '9th');
+1 row created.
+
+SQL>  INSERT INTO student (student_name, city, age, address, class)VALUES('Catherine Davis', 'Chicago', 17, '789 Pine Road', '11th');
+1 row created.
+
+SQL> INSERT INTO student (student_name, city, age, address, class)VALUES('David Brown', 'New York', 16, '321 Maple Drive', '10th');
+1 row created.
+
+SQL> INSERT INTO student (student_name, city, age, address, class)VALUES('Divya', 'New York', 16, '321 Maple Drive', '10th');
+1 row created.
+
+DISPLAYING THE ROWS
+
+SQL>> select * from student;
+STUDENT_NAME         CITY                        AGE ADDRESS
+-------------------- -------------------- ---------- -------------------------
+CLASS
+----------
+Alice Johnson        New York                     16 123 Elm Street
+10th
+
+Bob Smith            Los Angeles                  15 456 Oak Avenue
+9th
+
+Catherine Davis      Chicago                      17 789 Pine Road
+11th
+
+David Brown          New York                     16 321 Maple Drive
+10th
+
+Divya                New York                     16 321 Maple Drive
+10th
+
+1. Query to fetch the number of students by each alphabet.
+-Ex. A- 5, B-0, C – 2..etc
+
+SQL>> SELECT SUBSTR(student_name, 1, 1), COUNT(*)  FROM student
+  2  GROUP BY SUBSTR(student_name, 1, 1)
+  3  ORDER BY SUBSTR(student_name, 1, 1);
+
+SUBS   COUNT(*)
+---- ----------
+A             1
+B             1
+C             1
+D             2
+
+
+2. Query to list the students in a particular city
+
+SQL>> SELECT student_name, city, age, address, class FROM student WHERE city = 'New York';
+
+STUDENT_NAME         CITY                        AGE ADDRESS
+-------------------- -------------------- ---------- -------------------------
+CLASS
+----------
+Alice Johnson        New York                     16 123 Elm Street
+10th
+
+David Brown          New York                     16 321 Maple Drive
+10th
+
+Divya                New York                     16 321 Maple Drive
+10th
+
+
+SQL> commit;
+Commit complete.
